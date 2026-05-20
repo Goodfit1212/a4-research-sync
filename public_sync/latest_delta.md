@@ -2,73 +2,64 @@
 
 ## sync_seq
 
-1
+3
 
 ## previous_seq
 
-none
+2
 
 ## status
 
-first_public_sync_state
+local_python_orchestration_plan_created
 
 ## instruction received
 
-Create canonical research workflow rules and run a small controlled canonical-scoring search. Do not run broad brute-force optimisation. Do not add new prediction theory. Do not push anything.
+Pause model optimisation and design a low-usage local research workflow. Move repetitive experiment work to local Python, keep Codex and ChatGPT for high-value decisions, create a local orchestration plan, add a focused public-sync safety scan workflow, reduce verbose logging, and reduce Codex supervision during loops.
 
 ## what was executed
 
-- Established a local research-memory workflow with mandatory timestamped delta logs.
-- Added a clipboard-first completion rule for future local task summaries.
-- Marked older non-canonical optimisation state as stale/canonical-rescored.
-- Ran a bounded canonical-scoring search with 100 trials.
-- Logged every trial and generated ranked results plus a walk-forward summary.
-- Updated local research memory and the local bridge summary.
+- Created a local Python research orchestration plan.
+- Defined role separation for local Python, Codex, and ChatGPT.
+- Proposed local experiment components for queues, checkpoints, trial logs, ranked results, condensed summaries, and public deltas.
+- Added a narrow public-sync safety scan tool.
+- Ran only smoke checks for the safety scanner.
+- Did not run model optimisation.
 
 ## key findings
 
-- No simple timing family in the controlled search met the canonical acceptance criteria.
-- The best candidate was balanced between confirmed HIGH and LOW reversals.
-- Failure was not caused by one-sided reversal direction output.
-- Walk-forward validation remained weak.
-- The current evidence still points to timing-window detection rather than reliable reversal-confirmation prediction.
+- Repetitive loops should run locally through Python with checkpoints and CSV logs.
+- Codex should create or repair the framework, not supervise every trial.
+- ChatGPT should receive only condensed summaries, top results, anomalies, open questions, and proposed next directions.
+- Public sync should contain only sanitized condensed deltas and compact running state.
+- Routine safety scans should target only public sync files by default.
 
 ## metrics
 
-- trials run: 100
-- accepted trials: 0
-- best canonical match rate: 50.1667%
-- best prediction count: 1800
-- confirmed HIGH reversals: 460
-- confirmed LOW reversals: 443
-- trend continuations: 891
-- ambiguous/noise cases: 6
-- no reversal/out-of-range cases: 0
-- train match rate: 49.8382%
-- validation match rate: 50.8865%
-- walk-forward minimum match rate: 50.3012%
-- bullish match rate: 49.3684%
-- bearish match rate: 51.0588%
-- high-volatility match rate: 50.5515%
-- low-volatility match rate: 49.5787%
+- model optimisation runs: 0
+- new orchestration plan: created
+- public-sync safety scanner: created
+- safety scan default target: public sync files only
+- safety scan result: SAFE
+- verbose terminal reports: reduced by design
+- Codex trial supervision: reduced by design
 
 ## conclusion
 
-The controlled canonical search did not materially beat chance. No accepted canonical model exists yet. Current simple timing-cycle families should not be treated as a reliable turning-date prediction edge.
+The research workflow now has a low-usage design: local Python should handle repetitive experiments and summaries, while Codex and ChatGPT should be reserved for framework changes, failure review, and strategic research decisions.
 
 ## recommended next step
 
-Pause broad optimisation. Review why balanced timing predictions still score near 50% under canonical reversal-confirmation scoring, then decide whether a separate direction hypothesis or filter phase is needed.
+If approved later, create a minimal local research orchestrator skeleton and a sample experiment queue. Do not resume optimisation until the orchestration workflow is accepted.
 
 ## compact running state
 
-- Official scoring logic: predicted date is the reversal confirmation day; the prior trading day is the expected extreme.
-- A valid HIGH reversal requires price rising into the prior day and reversing down on the predicted day.
-- A valid LOW reversal requires price falling into the prior day and reversing up on the predicted day.
-- Date-only proximity is not sufficient.
-- Current best canonical result is 50.1667% from the controlled 100-trial search.
-- No canonical result has met the 60% acceptance threshold.
-- Walk-forward minimum for the best result is 50.3012%, below the 52% floor.
-- Current project understanding: the system detects timing windows better than true reversal confirmations.
-- Major unresolved issue: direction/reversal confirmation accuracy remains near chance.
-- Weak approaches so far: date-only matching, nearby pivot-type matching, return-led optimisation, and simple timing-only cycle searches.
+- Official scoring logic remains canonical reversal-confirmation scoring.
+- Current best canonical timing result remains near 50% and is not accepted.
+- Model optimisation is paused.
+- New priority is low-usage local orchestration.
+- Local Python should run sweeps, scoring, ranking, checkpoints, summaries, and routine safety scans.
+- Codex should handle framework changes, bugs, modules, dashboard work, and non-routine failures.
+- ChatGPT should receive condensed summaries and high-value decisions only.
+- Public sync remains limited to three sanitized delta files.
+- Default safety scan now targets public sync files only.
+- No broad optimisation should resume until approved.
