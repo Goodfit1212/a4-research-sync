@@ -2,48 +2,48 @@
 
 ## sync_seq
 
-6
+7
 
 ## previous_seq
 
-5
+6
 
 ## status
 
-latest_delta_only_scan_and_upload_rule
+public_sync_rotation_upload_rule_corrected
 
 ## instruction received
 
-Clarify that the public safety scan should be a Python routine and that only the upload file matters. Since the workflow uploads only `latest_delta.md`, the default scan should check only that file.
+Each time the latest public delta is uploaded, rotate the previous files first: move `latest_delta_minus_1.md` to `latest_delta_minus_2.md`, move `latest_delta.md` to `latest_delta_minus_1.md`, then write/upload the newest `latest_delta.md`.
 
 ## what was executed
 
-- Updated the public sync safety scanner default target to `public_sync/latest_delta.md` only.
-- Added an optional full public-sync audit mode for the minus files when explicitly needed.
-- Updated workflow rules to say the default upload target is `latest_delta.md` only.
-- Updated the orchestration plan to match the latest-delta-only default scan/upload workflow.
+- Corrected the workflow rule so each public sync publishes a consistent rotated set.
+- Updated the local orchestration plan to match the rotation/upload rule.
+- Rotated local public sync files.
+- Created this new condensed public delta.
+- Prepared to safety scan and publish all three public sync files together.
 
 ## key findings
 
-- Routine scanning should match the upload surface.
-- Checking all local public sync history on every task wastes time and is not necessary for the default handoff.
-- Full public-sync scans remain available only for rotation audits or suspicious references.
+- Publishing only `latest_delta.md` leaves remote minus files stale.
+- The remote sync repo should receive the rotated three-file state together.
+- Safety scanning should cover the files being uploaded.
 
 ## metrics
 
-- default scan files: 1
-- default upload files: 1
-- default upload target: `public_sync/latest_delta.md`
-- full public sync audit option: available
+- sync_seq: 7
+- previous_seq: 6
+- public sync files to upload: 3
 - broad optimisation runs: 0
 
 ## conclusion
 
-The public sync workflow is now leaner: by default, Python scans only `latest_delta.md`, and only `latest_delta.md` is uploaded for ChatGPT handoff.
+Public sync should always rotate and upload the three-file state together so ChatGPT can see the latest delta plus the two previous states consistently.
 
 ## recommended next step
 
-Continue using the narrow public-sync safety check before publishing. Use the full public-sync audit only when the public file set changes or a suspicious reference appears.
+Use the three-file public sync state as the standard GitHub handoff after each completed task.
 
 ## compact running state
 
@@ -52,8 +52,8 @@ Continue using the narrow public-sync safety check before publishing. Use the fu
 - Model optimisation remains paused.
 - Local Python orchestration skeleton exists.
 - Public sync is the ChatGPT handoff channel.
-- Default public upload is now only `public_sync/latest_delta.md`.
-- Default safety scan checks only `public_sync/latest_delta.md`.
-- Full public-sync scan is optional for audits.
+- Public sync now rotates and uploads the three-file state together.
+- Safety scan covers uploaded public sync files.
 - Full research memory and raw experiment history remain local only.
-- If the safety scan says REVIEW_REQUIRED, do not push.
+- If safety scan says REVIEW_REQUIRED, do not push.
+- No broad optimisation should resume until approved.

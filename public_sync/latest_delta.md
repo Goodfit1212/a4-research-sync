@@ -2,48 +2,48 @@
 
 ## sync_seq
 
-7
+8
 
 ## previous_seq
 
-6
+7
 
 ## status
 
-public_sync_rotation_upload_rule_corrected
+codex_autonomy_levels_added
 
 ## instruction received
 
-Each time the latest public delta is uploaded, rotate the previous files first: move `latest_delta_minus_1.md` to `latest_delta_minus_2.md`, move `latest_delta.md` to `latest_delta_minus_1.md`, then write/upload the newest `latest_delta.md`.
+Add Codex autonomy levels so Codex can proceed independently when actions are safe, local-only, reversible, and within the approved research scope. Reserve user approval for scoring changes, new theory, sensitive data, external access, deletion, credentials, public-risk changes, unusually large jobs, and substantial architecture changes. Reduce ChatGPT usage to major decisions, anomalies, near-acceptance results, scoring/theory questions, or stalled progress.
 
 ## what was executed
 
-- Corrected the workflow rule so each public sync publishes a consistent rotated set.
-- Updated the local orchestration plan to match the rotation/upload rule.
-- Rotated local public sync files.
-- Created this new condensed public delta.
-- Prepared to safety scan and publish all three public sync files together.
+- Added Codex autonomy levels to the local workflow rules.
+- Added matching autonomy guidance to the local Python orchestration plan.
+- Kept optimisation paused.
+- Did not change model code.
+- Rotated the public sync files.
 
 ## key findings
 
-- Publishing only `latest_delta.md` leaves remote minus files stale.
-- The remote sync repo should receive the rotated three-file state together.
-- Safety scanning should cover the files being uploaded.
+- Routine local research actions are now explicitly allowed without repeated approval.
+- Risky actions remain gated by user approval.
+- ChatGPT interpretation should be reserved for high-value decisions and anomalies.
 
 ## metrics
 
-- sync_seq: 7
-- previous_seq: 6
-- public sync files to upload: 3
-- broad optimisation runs: 0
+- autonomy levels added: 3
+- optimisation runs: 0
+- model code changes: 0
+- public sync files rotated: 3
 
 ## conclusion
 
-Public sync should always rotate and upload the three-file state together so ChatGPT can see the latest delta plus the two previous states consistently.
+Codex can now execute routine safe local research workflow actions with lower interaction overhead, while preserving explicit approval gates for risky or high-impact work.
 
 ## recommended next step
 
-Use the three-file public sync state as the standard GitHub handoff after each completed task.
+Use the autonomy levels during future orchestrator and local Python research tasks. Pause and ask only when an action falls into Level C or is uncertain.
 
 ## compact running state
 
@@ -51,9 +51,9 @@ Use the three-file public sync state as the standard GitHub handoff after each c
 - Current best canonical timing result remains near 50% and is not accepted.
 - Model optimisation remains paused.
 - Local Python orchestration skeleton exists.
-- Public sync is the ChatGPT handoff channel.
-- Public sync now rotates and uploads the three-file state together.
-- Safety scan covers uploaded public sync files.
+- Codex may proceed on safe local Level A tasks.
+- Level B actions are allowed but should be reported afterward.
+- Level C actions require user approval first.
+- ChatGPT is reserved for major anomalies, near-acceptance, scoring/theory decisions, or stalled budgets.
+- Public sync rotates and uploads the three-file state together.
 - Full research memory and raw experiment history remain local only.
-- If safety scan says REVIEW_REQUIRED, do not push.
-- No broad optimisation should resume until approved.
