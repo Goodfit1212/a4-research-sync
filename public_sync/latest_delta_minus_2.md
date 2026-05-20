@@ -2,64 +2,60 @@
 
 ## sync_seq
 
-3
+5
 
 ## previous_seq
 
-2
+4
 
 ## status
 
-local_python_orchestration_plan_created
+automatic_public_sync_rule_enabled
 
 ## instruction received
 
-Pause model optimisation and design a low-usage local research workflow. Move repetitive experiment work to local Python, keep Codex and ChatGPT for high-value decisions, create a local orchestration plan, add a focused public-sync safety scan workflow, reduce verbose logging, and reduce Codex supervision during loops.
+After each completed instruction, publish the latest delta log to GitHub so ChatGPT can analyze it and advise the next action.
 
 ## what was executed
 
-- Created a local Python research orchestration plan.
-- Defined role separation for local Python, Codex, and ChatGPT.
-- Proposed local experiment components for queues, checkpoints, trial logs, ranked results, condensed summaries, and public deltas.
-- Added a narrow public-sync safety scan tool.
-- Ran only smoke checks for the safety scanner.
-- Did not run model optimisation.
+- Updated the local workflow rules to treat sanitized public sync publishing as the default after each completed task.
+- Clarified that only condensed sanitized public deltas are published.
+- Preserved the rule that full research memory, raw logs, source code, datasets, reports, Excel files, credentials, and private paths remain local only.
+- Rotated the local public sync files.
+- Ran the narrow public sync safety scan before publishing.
 
 ## key findings
 
-- Repetitive loops should run locally through Python with checkpoints and CSV logs.
-- Codex should create or repair the framework, not supervise every trial.
-- ChatGPT should receive only condensed summaries, top results, anomalies, open questions, and proposed next directions.
-- Public sync should contain only sanitized condensed deltas and compact running state.
-- Routine safety scans should target only public sync files by default.
+- Public GitHub sync should be the handoff channel for ChatGPT review.
+- The published content must stay condensed and sanitized.
+- The safety scan remains mandatory before every public sync push.
+- If the scan returns REVIEW_REQUIRED, publishing must stop.
 
 ## metrics
 
-- model optimisation runs: 0
-- new orchestration plan: created
-- public-sync safety scanner: created
-- safety scan default target: public sync files only
-- safety scan result: SAFE
-- verbose terminal reports: reduced by design
-- Codex trial supervision: reduced by design
+- automatic sanitized public sync: enabled
+- allowed public sync files: 3
+- safety scan required before push: yes
+- full local delta history published: no
+- broad optimisation runs: 0
 
 ## conclusion
 
-The research workflow now has a low-usage design: local Python should handle repetitive experiments and summaries, while Codex and ChatGPT should be reserved for framework changes, failure review, and strategic research decisions.
+The workflow now publishes the latest sanitized public sync delta after each completed instruction, unless the safety scan requires review.
 
 ## recommended next step
 
-If approved later, create a minimal local research orchestrator skeleton and a sample experiment queue. Do not resume optimisation until the orchestration workflow is accepted.
+Use the public sync repo latest delta as the ChatGPT handoff. Continue keeping verbose logs and full research memory local only.
 
 ## compact running state
 
 - Official scoring logic remains canonical reversal-confirmation scoring.
 - Current best canonical timing result remains near 50% and is not accepted.
-- Model optimisation is paused.
-- New priority is low-usage local orchestration.
-- Local Python should run sweeps, scoring, ranking, checkpoints, summaries, and routine safety scans.
-- Codex should handle framework changes, bugs, modules, dashboard work, and non-routine failures.
-- ChatGPT should receive condensed summaries and high-value decisions only.
-- Public sync remains limited to three sanitized delta files.
-- Default safety scan now targets public sync files only.
-- No broad optimisation should resume until approved.
+- Model optimisation remains paused.
+- Local Python orchestration skeleton exists and dry-run resume works.
+- Public sync is now the default ChatGPT handoff after completed tasks.
+- Only condensed sanitized public deltas should be pushed.
+- Narrow safety scan must run before every public sync push.
+- Full research memory and raw experiment history remain local only.
+- Public sync remains limited to three files.
+- If safety scan says REVIEW_REQUIRED, do not push.

@@ -2,64 +2,58 @@
 
 ## sync_seq
 
-4
+6
 
 ## previous_seq
 
-3
+5
 
 ## status
 
-research_orchestrator_skeleton_created
+latest_delta_only_scan_and_upload_rule
 
 ## instruction received
 
-Implement the local Python research orchestrator skeleton. Build the runner framework first, support dry-run mode with max five trials, use canonical reversal-confirmation as the primary scoring method field, verify queue/checkpoint/log/ranking/summary outputs, update public sync with a condensed result, and do not push until approval.
+Clarify that the public safety scan should be a Python routine and that only the upload file matters. Since the workflow uploads only `latest_delta.md`, the default scan should check only that file.
 
 ## what was executed
 
-- Created a local research orchestration package.
-- Added a dry-run capable research orchestrator.
-- Created the local run directory outputs for queue, checkpoint, trial log, ranked results, condensed summary, and public delta source.
-- Verified resume behavior by running the dry-run twice.
-- Updated the orchestration plan with implementation status.
-- Did not run broad optimisation.
-- Did not push.
+- Updated the public sync safety scanner default target to `public_sync/latest_delta.md` only.
+- Added an optional full public-sync audit mode for the minus files when explicitly needed.
+- Updated workflow rules to say the default upload target is `latest_delta.md` only.
+- Updated the orchestration plan to match the latest-delta-only default scan/upload workflow.
 
 ## key findings
 
-- The first dry-run wrote five framework-check trials.
-- The second dry-run resumed from checkpoint and wrote zero duplicate trials.
-- The orchestrator now provides the basic local loop for future unattended experiments.
-- Dry-run metrics are placeholders and are not research results.
+- Routine scanning should match the upload surface.
+- Checking all local public sync history on every task wastes time and is not necessary for the default handoff.
+- Full public-sync scans remain available only for rotation audits or suspicious references.
 
 ## metrics
 
-- dry-run max trials: 5
-- first run new trials: 5
-- resume run new trials: 0
-- trial log rows: 5
-- scoring method field: canonical_reversal_confirmation
+- default scan files: 1
+- default upload files: 1
+- default upload target: `public_sync/latest_delta.md`
+- full public sync audit option: available
 - broad optimisation runs: 0
-- pushed to GitHub: no
 
 ## conclusion
 
-The local Python orchestration skeleton is ready for framework-level use. It can create and resume local runs, write CSV logs, rank results, and generate condensed summaries without Codex supervising each trial.
+The public sync workflow is now leaner: by default, Python scans only `latest_delta.md`, and only `latest_delta.md` is uploaded for ChatGPT handoff.
 
 ## recommended next step
 
-Do not run optimisation yet. If approved, wire one existing diagnostic module into the orchestrator as an explicit queued experiment type and keep dry-run as the default smoke-test path.
+Continue using the narrow public-sync safety check before publishing. Use the full public-sync audit only when the public file set changes or a suspicious reference appears.
 
 ## compact running state
 
 - Official scoring logic remains canonical reversal-confirmation scoring.
 - Current best canonical timing result remains near 50% and is not accepted.
 - Model optimisation remains paused.
-- Local Python orchestration skeleton now exists.
-- Dry-run mode verifies queue, checkpoint, trial log, ranking, and summary outputs.
-- Resume behavior is verified with no duplicate dry-run trials.
-- Codex should still avoid supervising every trial.
-- ChatGPT should receive condensed summaries only.
-- Public sync remains limited to three sanitized delta files.
-- No push for this update until approved.
+- Local Python orchestration skeleton exists.
+- Public sync is the ChatGPT handoff channel.
+- Default public upload is now only `public_sync/latest_delta.md`.
+- Default safety scan checks only `public_sync/latest_delta.md`.
+- Full public-sync scan is optional for audits.
+- Full research memory and raw experiment history remain local only.
+- If the safety scan says REVIEW_REQUIRED, do not push.
